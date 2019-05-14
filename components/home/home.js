@@ -3,12 +3,16 @@ import { Font, AppLoading } from 'expo';
 import { Root, Container, Tabs, Tab } from 'native-base';
 
 import HeaderApp from '../header/header';
+
 import Global from './global';
+import Slab from './slab';
+import Beam from './beam';
+import Column from './column';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loading: false }
+        this.state = { loading: false, page: 0, trrf: undefined }
     }
 
     async componentWillMount() {
@@ -19,20 +23,27 @@ class Home extends React.Component {
         this.setState({ loading: true });
     }
 
+    changePage(page, trrf) {
+        this.setState({ page, trrf });
+    }
+
     render() {
         if (this.state.loading) {
             return (
                 <Container>
                     <HeaderApp />
-                    <Tabs>
+                    <Tabs page={this.state.page}>
                         <Tab heading="TRRF Global" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                            <Global />
+                            <Global changePage={this.changePage.bind(this)} />
                         </Tab>
                         <Tab heading="Laje" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                            <Slab />
                         </Tab>
                         <Tab heading="Viga" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                            <Beam />
                         </Tab>
                         <Tab heading="Pilar" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                            <Column />
                         </Tab>
                     </Tabs>
                 </Container>

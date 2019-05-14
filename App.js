@@ -40,7 +40,7 @@ const App = createAppContainer(
     order: ['Home', 'Table','About'],
     tabBarOptions: {
       showIcon: true,
-      activeTintColor: 'red',
+      activeTintColor: '#8b0000',
       style: {
         backgroundColor: 'white',
       }

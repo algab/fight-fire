@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 60
+        marginTop: 80
     },
     title: {
         fontWeight: 'bold',
