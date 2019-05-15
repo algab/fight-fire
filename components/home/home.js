@@ -1,5 +1,6 @@
 import React from "react";
 import { Font, AppLoading } from 'expo';
+import { ScrollView, KeyboardAvoidingView } from "react-native";
 import { Root, Container, Tabs, Tab } from 'native-base';
 
 import HeaderApp from '../header/header';
@@ -32,20 +33,24 @@ class Home extends React.Component {
             return (
                 <Container>
                     <HeaderApp />
-                    <Tabs page={this.state.page}>
-                        <Tab heading="TRRF Global" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                            <Global changePage={this.changePage.bind(this)} />
-                        </Tab>
-                        <Tab heading="Laje" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                            <Slab />
-                        </Tab>
-                        <Tab heading="Viga" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                            <Beam />
-                        </Tab>
-                        <Tab heading="Pilar" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                            <Column />
-                        </Tab>
-                    </Tabs>
+                    <ScrollView>
+                        <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
+                            <Tabs page={this.state.page}>
+                                <Tab heading="TRRF Global" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                                    <Global changePage={this.changePage.bind(this)} />
+                                </Tab>
+                                <Tab heading="Laje" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                                    <Slab trrf={this.state.trrf} changePage={this.changePage.bind(this)} />
+                                </Tab>
+                                <Tab heading="Viga" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                                    <Beam />
+                                </Tab>
+                                <Tab heading="Pilar" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
+                                    <Column />
+                                </Tab>
+                            </Tabs>
+                        </KeyboardAvoidingView>
+                    </ScrollView>
                 </Container>
             )
         }
