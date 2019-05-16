@@ -24,12 +24,12 @@ class Home extends React.Component {
         this.setState({ loading: true });
     }
 
-    changePage(page, trrf) {
+    changePage(page, trrf) {        
         this.setState({ page, trrf });
     }
 
     render() {
-        if (this.state.loading) {
+        if (this.state.loading) {            
             return (
                 <Container>
                     <HeaderApp />
@@ -43,10 +43,10 @@ class Home extends React.Component {
                                     <Slab trrf={this.state.trrf} changePage={this.changePage.bind(this)} />
                                 </Tab>
                                 <Tab heading="Viga" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                                    <Beam />
+                                    <Beam trrf={this.state.trrf} changePage={this.changePage.bind(this)} />
                                 </Tab>
                                 <Tab heading="Pilar" tabStyle={{ backgroundColor: '#8b0000' }} textStyle={{ color: '#fff' }} activeTabStyle={{ backgroundColor: '#8b0000' }}>
-                                    <Column />
+                                    <Column trrf={this.state.trrf} changePage={this.changePage.bind(this)} />
                                 </Tab>
                             </Tabs>
                         </KeyboardAvoidingView>

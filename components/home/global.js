@@ -49,7 +49,7 @@ class Global extends React.Component {
 
     pressButton() {
         Alert.alert(
-            "Resultado", `Classe: ${this.state.trrf.class} TRRF: ${this.state.trrf.minutes} min`,
+            "Resultado", `Classe: ${this.state.trrf.class}\nTRRF: ${this.state.trrf.minutes} min`,
             [
                 {
                     text: 'Cancelar'

@@ -5,8 +5,11 @@ import { Content, Input, Form, Item, Picker, Icon, Button } from 'native-base';
 class Slab extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);        
-        this.state = { global: props.trrf, type: undefined, armor: undefined, height: undefined, cobr: undefined, width: undefined, depth: undefined }
+        this.state = { trrfGlobal: props.trrf, type: undefined, armor: undefined, height: undefined, cobr: undefined, width: undefined, depth: undefined }
+    }
+
+    componentWillReceiveProps(nextProps) {        
+        this.setState({ trrfGlobal: nextProps.trrf });
     }
 
     typeValue(value) {
@@ -66,6 +69,69 @@ class Slab extends React.Component {
                 this.setState({ depth: parseFloat(value) });
             }
         }, 600);
+    }
+
+    verifyButton() {
+        if (this.state.type === "1") {
+            if (this.state.armor != undefined && this.state.height != undefined && this.state.cobr != undefined) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else if (this.state.type === "2") {
+            if (this.state.armor != undefined && this.state.height != undefined && this.state.cobr != undefined && this.state.depth != undefined && this.state.width != undefined) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        else {
+            return true;
+        }
+    }
+
+    pressButton() {
+        let trrf = null;
+        if (this.state.type === "1") {
+            trrf = this.slabMacica();
+        }
+        else if (this.state.type === "2") {
+            let depth = this.slabDepth();
+            let width = this.slabWidth();
+            if (depth <= width) {
+                trrf = depth;
+            }
+            else {
+                trrf = width;
+            }
+        }
+        if (trrf >= parseFloat(this.state.trrfGlobal.minutes)) {
+            Alert.alert(
+                "TRRF Laje", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Laje: ${trrf} min\nAtendeu a Condição`,
+                [
+                    {
+                        text: 'Cancelar'
+                    },
+                    {
+                        text: 'Continuar',
+                        onPress: () => this.props.changePage(2, this.state.trrfGlobal)
+                    }
+                ]
+            )            
+        }
+        else {
+            Alert.alert(
+                "TRRF Laje", `TRRF Global: ${trrf} min\nTRRF Laje: ${this.state.trrfGlobal.minutes}\nNão atendeu a estrutura, redimensione`,
+                [
+                    {
+                        text: 'Cancelar'
+                    }
+                ]
+            ) 
+        }
     }
 
     slabMacica() {
@@ -263,61 +329,10 @@ class Slab extends React.Component {
         }
     }
 
-    verifyButton() {
-        if (this.state.type === "1") {
-            if (this.state.armor!=undefined&&this.state.height!=undefined&&this.state.cobr!=undefined) {
-                return false;            
-            }            
-            else {
-                return true;
-            }
-        }
-        else if (this.state.type === "2") {
-            if (this.state.armor!=undefined&&this.state.height!=undefined&&this.state.cobr!=undefined&&this.state.depth!=undefined&&this.state.width!=undefined) {
-                return false;            
-            }            
-            else {
-                return true;
-            }
-        }
-        else {
-            return true;
-        }
-    }
-
-    pressButton() {
-        let trrf = null;
-        if (this.state.type === "1") {
-            trrf = this.slabMacica();
-        }
-        else if (this.state.type === "2") {
-            let depth = this.slabDepth();
-            let width = this.slabWidth();
-            if (depth <= width) {
-                trrf = depth;
-            }
-            else {
-                trrf = width;
-            }
-        }
-        Alert.alert(
-            "Resultado", `TRRF: ${trrf} min`,
-            [
-                {
-                    text: 'Cancelar'
-                },
-                {
-                    text: 'Continuar',
-                    onPress: () => this.props.changePage(2,this.state.global)
-                }
-            ]
-        )
-    }
-
     render() {
-        if (this.state.global != undefined) {
+        if (this.state.trrfGlobal != undefined) {
             return (
-                <Content style={{height:470}}>
+                <Content style={{ height: 470 }}>
                     <Form style={{ marginBottom: 65 }}>
                         <Item picker regular style={[styles.input, { marginTop: 2 }]}>
                             <Picker
@@ -360,12 +375,12 @@ class Slab extends React.Component {
                         </Button>
                     </View>
                 </Content>
-            )            
+            )
         }
         else {
             return (
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{textAlign:'center'}}>Por favor, calcule o TRRF Global para depois calcular o TRRF da Laje.</Text>
+                    <Text style={{ textAlign: 'center' }}>Por favor, calcule o TRRF Global para depois calcular o TRRF da Laje.</Text>
                 </View>
             )
         }
