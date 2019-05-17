@@ -28,6 +28,10 @@ class Beam extends React.Component {
             if (value == "") {
                 this.setState({ base: undefined });
             }
+            else if (parseFloat(value) < 80) {
+                Alert.alert("Atenção","Base da seção não pode ser menor que 80 mm");
+                this.setState({ base: undefined });
+            }
             else {
                 this.setState({ base: parseFloat(value) });
             }
@@ -80,7 +84,7 @@ class Beam extends React.Component {
         let trrf = this.calcBeam();
         if (trrf >= parseFloat(this.state.trrfGlobal.minutes)) {
             Alert.alert(
-                "TRRF Viga", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Viga: ${trrf} min\nAtendeu a Condição`,
+                "TRRF Viga", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Viga: ${trrf} min\nCondição atendida com sucesso.`,
                 [
                     {
                         text: 'Cancelar'
@@ -94,7 +98,7 @@ class Beam extends React.Component {
         }
         else {
             Alert.alert(
-                "TRRF Viga", `TRRF Global: ${trrf} min\nTRRF Viga: ${this.state.trrfGlobal.minutes}\nNão atendeu a estrutura, redimensione`,
+                "TRRF Viga", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Viga: ${trrf} min\nCondição não atendida, redimensione a estrutura.`,
                 [
                     {
                         text: 'Cancelar'

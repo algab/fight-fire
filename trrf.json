@@ -1,0 +1,226 @@
+[
+    {
+        "id": "a",
+        "name": "Residencial",
+        "examples": [
+            {
+                "id": "a-1",
+                "name": "Habitações unifamiliares"
+            },
+            {
+                "id": "a-2",
+                "name": "Habitações multifamiliares"
+            },
+            {
+                "id": "a-3",
+                "name": "Habitações coletivas"
+            }
+        ]
+    },
+    {
+        "id": "b",
+        "name": "Serviços de hospedagem",
+        "examples": [
+            {
+                "id": "b-1",
+                "name": "Hotéis e assemelhados"
+            },
+            {
+                "id": "b-2",
+                "name": "Hotéis residencias"
+            }
+        ]
+    },
+    {
+        "id": "c",
+        "name": "Comercial Varejista",
+        "examples": [
+            {
+                "id": "c-1",
+                "name": "Comércio em geral, de pequeno porte"
+            },
+            {
+                "id": "c-2",
+                "name": "Comércio de grande e médio porte"
+            },
+            {
+                "id": "c-3",
+                "name": "Centros comerciais"
+            }
+        ]
+    },
+    {
+        "id": "d",
+        "name": "Serviços profissionais, pessoais e técnicos",
+        "examples": [
+            {
+                "id": "d-1",
+                "name": "Locais para prestação de serviços"
+            },
+            {
+                "id": "d-2",
+                "name": "Agências bancarias"
+            },
+            {
+                "id": "d-3",
+                "name": "Serviços de reparação"
+            }
+        ]
+    },
+    {
+        "id": "e",
+        "name": "Educacional e cultura fisica",
+        "examples": [
+            {
+                "id": "e-1",
+                "name": "Escolas em geral"
+            },
+            {
+                "id": "e-2",
+                "name": "Escolas especiais"
+            },
+            {
+                "id": "e-3",
+                "name": "Espaço para cultura física"
+            },
+            {
+                "id": "e-4",
+                "name": "Centros de treinamento profissional"
+            },
+            {
+                "id": "e-5",
+                "name": "Pré-escolas"
+            },
+            {
+                "id": "e-6",
+                "name": "Escolas para portadores de deficiências"
+            }
+        ]
+    },
+    {
+        "id": "f",
+        "name": "Locais de reunião pública",
+        "examples": [
+            {
+                "id": "f-1",
+                "name": "Locais onde há objetos de valor inestimável"
+            },
+            {
+                "id": "f-2",
+                "name": "Tempos e auditórios"
+            },
+            {
+                "id": "f-3",
+                "name": "Centros esportivos"
+            },
+            {
+                "id": "f-4",
+                "name": "Estações e terminais de passageiros"
+            },
+            {
+                "id": "f-5",
+                "name": "Locais de artes cênicas"
+            },
+            {
+                "id": "f-6",
+                "name": "Clubes sociais"
+            },
+            {
+                "id": "f-7",
+                "name": "Construções provisórias"
+            },
+            {
+                "id": "f-8",
+                "name": "Locais para refeições"
+            }
+        ]
+    },
+    {
+        "id": "g",
+        "name": "Serviços automotivos",
+        "examples": [
+            {
+                "id": "g-1-1",
+                "name": "Garagens sem público e local aberto"
+            },
+            {
+                "id": "g-1-2",
+                "name": "Garagens sem público e local fechado"
+            },
+            {
+                "id": "g-2-1",
+                "name": "Garagens com público e local aberto"
+            },
+            {
+                "id": "g-2-2",
+                "name": "Garagens com público e local fechado"
+            },
+            {
+                "id": "g-3",
+                "name": "Locais de abastecimento de combustível"
+            },
+            {
+                "id": "g-4",
+                "name": "Serviços de conservação, manutenção e reparos"
+            },
+            {
+                "id": "g-5",
+                "name": "Serviços em veículos de grande porte"
+            }
+        ]
+    },
+    {
+        "id": "h",
+        "name": "Serviços de saúde e institucionais",
+        "examples": [
+            {
+                "id": "h-1",
+                "name": "Hospitais veterinários e assemelhado"
+            },
+            {
+                "id": "h-2",
+                "name": "Locais com pessoas de cuidados especiais"
+            },
+            {
+                "id": "h-3",
+                "name": "Hospitais e assemelhados"
+            },
+            {
+                "id": "h-4",
+                "name": "Prédios vinculados às forças armadas e policias"
+            },
+            {
+                "id": "h-5",
+                "name": "Locais onde a liberdade sofre restrições"
+            }
+        ]
+    },
+    {
+        "id": "i",
+        "name": "Industrial e Atacadista",
+        "examples": [
+            {
+                "id": "i-1",
+                "name": "Locais com médio risco de incêndio"
+            },
+            {
+                "id": "i-2",
+                "name": "Locais com grande risco de incêndio"
+            }
+        ]
+    },
+    {
+        "id": "j",
+        "name": "Depósitos",
+        "examples": [
+            {
+                "id": "j-1",
+                "name": "Depósitos de baixo risco de incêndio"
+            },
+            {
+                "id": "j-2",
+                "name": "Depósitos de médio e alto risco de incêndio"
+            }
+        ]
+    }
+]

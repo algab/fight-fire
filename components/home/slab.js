@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, StyleSheet, View, Text } from "react-native";
-import { Content, Input, Form, Item, Picker, Icon, Button } from 'native-base';
+import { Content, Input, Form, Item, Picker, Icon, Button, Toast } from 'native-base';
 
 class Slab extends React.Component {
     constructor(props) {
@@ -8,7 +8,7 @@ class Slab extends React.Component {
         this.state = { trrfGlobal: props.trrf, type: undefined, armor: undefined, height: undefined, cobr: undefined, width: undefined, depth: undefined }
     }
 
-    componentWillReceiveProps(nextProps) {        
+    componentWillReceiveProps(nextProps) {
         this.setState({ trrfGlobal: nextProps.trrf });
     }
 
@@ -32,10 +32,14 @@ class Slab extends React.Component {
             if (value == "") {
                 this.setState({ height: undefined });
             }
+            else if (parseFloat(value) < 60) {
+                Alert.alert("Atenção", "Altura não pode ser menor que 60 mm.");
+                this.setState({ height: undefined });
+            }
             else {
                 this.setState({ height: parseFloat(value) });
             }
-        }, 600);
+        }, 800);
     }
 
     changeCobr(value) {
@@ -54,6 +58,10 @@ class Slab extends React.Component {
             if (value == "") {
                 this.setState({ width: undefined });
             }
+            else if (parseFloat(value) < 80) {
+                Alert.alert("Atenção", "Largura não pode ser menor que 80 mm.");
+                this.setState({ width: undefined });
+            }
             else {
                 this.setState({ width: parseFloat(value) });
             }
@@ -63,6 +71,10 @@ class Slab extends React.Component {
     changeDepth(value) {
         setTimeout(() => {
             if (value == "") {
+                this.setState({ depth: undefined });
+            }
+            else if (parseFloat(value) < 10) {
+                Alert.alert("Atenção", "Espessura não pode ser menor que 10 mm.");
                 this.setState({ depth: undefined });
             }
             else {
@@ -110,7 +122,7 @@ class Slab extends React.Component {
         }
         if (trrf >= parseFloat(this.state.trrfGlobal.minutes)) {
             Alert.alert(
-                "TRRF Laje", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Laje: ${trrf} min\nAtendeu a Condição`,
+                "TRRF Laje", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Laje: ${trrf} min\nCondição atendida com sucesso.`,
                 [
                     {
                         text: 'Cancelar'
@@ -120,17 +132,17 @@ class Slab extends React.Component {
                         onPress: () => this.props.changePage(2, this.state.trrfGlobal)
                     }
                 ]
-            )            
+            )
         }
         else {
             Alert.alert(
-                "TRRF Laje", `TRRF Global: ${trrf} min\nTRRF Laje: ${this.state.trrfGlobal.minutes}\nNão atendeu a estrutura, redimensione`,
+                "TRRF Laje", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Laje: ${trrf} min\nCondição não atendida, redimensione a estrutura.`,
                 [
                     {
                         text: 'Cancelar'
                     }
                 ]
-            ) 
+            )
         }
     }
 

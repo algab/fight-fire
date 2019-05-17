@@ -32,6 +32,10 @@ class Column extends React.Component {
             if (value == "") {
                 this.setState({ base: undefined });
             }
+            else if (parseFloat(value) < 180) {
+                Alert.alert("Atenção","A Base da seção não pode ser menor que 155 mm");
+                this.setState({ base: undefined });
+            }
             else {
                 this.setState({ base: parseFloat(value) });
             }
@@ -169,7 +173,7 @@ class Column extends React.Component {
         }
         if (trrf >= parseFloat(this.state.trrfGlobal.minutes)) {
             Alert.alert(
-                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf} min\nAtendeu a Condição`,
+                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf} min\nCondição atendida com sucesso.`,
                 [
                     {
                         text: 'Cancelar'
@@ -183,7 +187,7 @@ class Column extends React.Component {
         }
         else {
             Alert.alert(
-                "TRRF Pilar", `TRRF Global: ${trrf} min\nTRRF Pilar: ${this.state.trrfGlobal.minutes}\nNão atendeu a estrutura, redimensione`,
+                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf} min\nCondição não atendida, redimensione a estrutura.`,
                 [
                     {
                         text: 'Cancelar'
@@ -300,8 +304,8 @@ class Column extends React.Component {
                                 selectedValue={this.state.type}
                                 onValueChange={this.typeValue.bind(this)}>
                                 <Picker.Item label="SELECIONE O TIPO DO PILAR:" />
-                                <Picker.Item label="Pilar de Borda (Uma Face Exposta ao Fogo)" value="1" />
-                                <Picker.Item label="Pilar de Canto e Interno" value="2" />
+                                <Picker.Item label="Pilar de uma face exposta ao fogo" value="1" />
+                                <Picker.Item label="Pilar (Duas os mais faces expostas)" value="2" />
                             </Picker>
                         </Item>
                         <Item regular style={styles.input}>

@@ -11,7 +11,7 @@ const App = createAppContainer(
     Home : {
       screen: Home,
       navigationOptions: {
-        tabBarLabel:"Home",
+        tabBarLabel:"Inicio",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="home" size={30} color="#8b0000" />
         )
@@ -20,7 +20,7 @@ const App = createAppContainer(
     Table: {
       screen: Table,
       navigationOptions: {
-        tabBarLabel:"Tabela",
+        tabBarLabel:"Tabelas",
         tabBarIcon: ({ tintColor }) => (
           <Icon name="table" size={30} color="#8b0000" />
         )

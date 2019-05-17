@@ -24,12 +24,12 @@ class Home extends React.Component {
         this.setState({ loading: true });
     }
 
-    changePage(page, trrf) {        
+    changePage(page, trrf) {
         this.setState({ page, trrf });
     }
 
     render() {
-        if (this.state.loading) {            
+        if (this.state.loading) {
             return (
                 <Container>
                     <HeaderApp />
