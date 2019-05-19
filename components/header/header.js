@@ -1,7 +1,7 @@
 import React from "react";
 import { Constants } from 'expo';
 import { StyleSheet } from 'react-native';
-import { Header, Body, Left, Title, Icon } from 'native-base';
+import { Header, Body, Title } from 'native-base';
 
 class HeaderApp extends React.Component {
     constructor(props) {
@@ -11,9 +11,6 @@ class HeaderApp extends React.Component {
     render() {
         return (
             <Header style={styles.header}>
-                <Left>
-                    <Icon type="FontAwesome" name="fire" style={{color: 'white'}} />
-                </Left>
                 <Body>
                     <Title>Fight Fire</Title>
                 </Body>
@@ -24,7 +21,7 @@ class HeaderApp extends React.Component {
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: Constants.statusBarHeight + 20,
+        paddingTop: Constants.statusBarHeight + 25,
         paddingBottom: 30,
         backgroundColor: '#8b0000'
     }

@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Laje Maciça",
+        "description": "Norma ABNT 15200, Tabela 7, dimensões mínimas para lajes contínuas."
+    },
+    {
+        "name": "Laje Nervurada",
+        "description": "Norma ABNT 15200, Tabela 6, dimensões mínimas para lajes simplesmente apoiadas."
+    },
+    {
+        "name": "Laje Nervurada",
+        "description": "Norma ABNT 15200, Tabela 11, dimensões mínimas para lajes nervuradas armadas em uma só direção."
+    },
+    {
+        "name": "Viga",
+        "description": "Norma ABNT 15200, Tabela 5, dimensões mínimas para vigas contínuas ou vigas de pórticos."
+    },
+    {
+        "name": "Pilar",
+        "description": "Norma ABNT 15200, Tabela 12, dimensões mínimas para pilares com uma face exposta ao fogo."
+    }
+]

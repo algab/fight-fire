@@ -10,9 +10,9 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/fire-truck-256x256.png",
+    "icon": "./assets/fire-truck.png",
     "splash": {
-      "image": "./assets/splash-2.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,6 +22,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.fightfire.fightfire"
+    },
     "ios": {
       "supportsTablet": true
     }

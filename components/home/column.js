@@ -5,7 +5,7 @@ import { Content, Input, Form, Item, Picker, Icon, Button } from 'native-base';
 class Column extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { trrfGlobal: props.trrf, type: undefined, height: undefined, base: undefined, armorLong: undefined, armorTrans: undefined, cobr: undefined, fck: undefined, fyk: undefined, nsd: undefined, area: undefined, le: undefined, number: undefined }
+        this.state = { trrfGlobal: props.trrf, type: undefined, height: undefined, base: undefined, armorLong: undefined, armorTrans: undefined, cobr: undefined, nsd: undefined, le: undefined, number: undefined }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -32,14 +32,14 @@ class Column extends React.Component {
             if (value == "") {
                 this.setState({ base: undefined });
             }
-            else if (parseFloat(value) < 180) {
+            else if (parseFloat(value) < 155 && this.state.type === "1") {
                 Alert.alert("Atenção","A Base da seção não pode ser menor que 155 mm");
                 this.setState({ base: undefined });
             }
             else {
                 this.setState({ base: parseFloat(value) });
             }
-        }, 600);
+        }, 900);
     }
 
     changeArmorLong(value) {
@@ -75,28 +75,6 @@ class Column extends React.Component {
         }, 600);
     }
 
-    changeFCK(value) {
-        setTimeout(() => {
-            if (value == "") {
-                this.setState({ fck: undefined });
-            }
-            else {
-                this.setState({ fck: parseFloat(value) });
-            }
-        }, 600);
-    }
-
-    changeFYK(value) {
-        setTimeout(() => {
-            if (value == "") {
-                this.setState({ fyk: undefined });
-            }
-            else {
-                this.setState({ fyk: parseFloat(value) });
-            }
-        }, 600);
-    }
-
     changeNSD(value) {
         setTimeout(() => {
             if (value == "") {
@@ -104,17 +82,6 @@ class Column extends React.Component {
             }
             else {
                 this.setState({ nsd: parseFloat(value) });
-            }
-        }, 600);
-    }
-
-    changeArea(value) {
-        setTimeout(() => {
-            if (value == "") {
-                this.setState({ area: undefined });
-            }
-            else {
-                this.setState({ area: parseFloat(value) });
             }
         }, 600);
     }
@@ -151,7 +118,7 @@ class Column extends React.Component {
             }
         }
         else if (this.state.type === "2") {
-            if (this.state.height != undefined && this.state.base != undefined && this.state.armorLong != undefined && this.state.armorTrans != undefined && this.state.cobr != undefined && this.state.fck != undefined && this.state.fyk != undefined && this.state.nsd != undefined && this.state.area != undefined && this.state.le != undefined && this.state.number != undefined) {
+            if (this.state.height != undefined && this.state.base != undefined && this.state.armorLong != undefined && this.state.armorTrans != undefined && this.state.cobr != undefined && this.state.nsd != undefined && this.state.le != undefined && this.state.number != undefined) {
                 return false;
             }
             else {
@@ -173,7 +140,7 @@ class Column extends React.Component {
         }
         if (trrf >= parseFloat(this.state.trrfGlobal.minutes)) {
             Alert.alert(
-                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf} min\nCondição atendida com sucesso.`,
+                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf.toFixed(2)} min\nCondição atendida com sucesso.`,
                 [
                     {
                         text: 'Cancelar'
@@ -187,7 +154,7 @@ class Column extends React.Component {
         }
         else {
             Alert.alert(
-                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf} min\nCondição não atendida, redimensione a estrutura.`,
+                "TRRF Pilar", `TRRF Global: ${this.state.trrfGlobal.minutes} min\nTRRF Pilar: ${trrf.toFixed(2)} min\nCondição não atendida, redimensione a estrutura.`,
                 [
                     {
                         text: 'Cancelar'
@@ -235,7 +202,8 @@ class Column extends React.Component {
     }
 
     calcColumnCorner() {
-        const c1 = this.state.cobr + this.state.armorTrans + (this.state.armorLong/2)
+        const c1 = this.state.cobr + this.state.armorTrans + (this.state.armorLong/2);
+        const area = this.state.base * this.state.height;
 
         let b = 0;   
         let rn = 0;   
@@ -249,28 +217,28 @@ class Column extends React.Component {
         }
 
         if (this.state.height <= (1.5 * this.state.base)) {
-            b = ((2 * this.state.area)/(this.state.base + this.state.height)) * 10;
+            b = ((2 * area)/(this.state.base + this.state.height));
         }
         else {
-            b = (1.2 * this.state.base) * 10
-        }
+            b = (1.2 * this.state.base);
+        }       
 
-        let mi = (0.7 * this.state.nsd) / this.state.nsd
+        let mi = (0.7 * this.state.nsd) / this.state.nsd;
 
         if (mi >= 0.7) {
             mi = 0.7
-        }
+        }        
 
-        let lef = 0.5 * this.state.le
+        let lef = 0.5 * this.state.le;  
 
         if (lef >= 6) {
             lef = 6
-        }
+        }        
 
-        if (number==4) {
+        if (this.state.number==4) {
             rn = 0            
         }
-        else if (number > 4) {
+        else if (this.state.number > 4) {
             rn = 12
         }
 
@@ -279,19 +247,19 @@ class Column extends React.Component {
         }
         else if (b > 450) {
             rb = 40.5
-        }
-
+        }     
+        
         let rl = 9.60 * (5 - lef)
         let ra = 1.6 * (c1 - 30)
-        let rmi = 83 * (1 - mi)
-
+        let rmi = 83 * (1 - mi)    
+        
         return 120 * Math.pow(((rmi + ra + rl + rb + rn) / 120),1.8)
     }
 
     render() {
         if (this.state.trrfGlobal != undefined) {
             return (
-                <Content style={{ height: 870 }}>
+                <Content style={{ height: 680 }}>
                     <Form style={{ marginBottom: 65 }}>
                         <Item picker regular style={[styles.input, { marginTop: 2 }]}>
                             <Picker
@@ -325,22 +293,7 @@ class Column extends React.Component {
                         </Item>
                         {this.state.type === "2" && (
                             <Item regular style={styles.input}>
-                                <Input placeholder="Digite o FCK (MPa)" keyboardType="numeric" onChangeText={(text) => this.changeFCK(text)} />
-                            </Item>
-                        )}
-                        {this.state.type === "2" && (
-                            <Item regular style={styles.input}>
-                                <Input placeholder="Digite o FYK (MPa)" keyboardType="numeric" onChangeText={(text) => this.changeFYK(text)} />
-                            </Item>
-                        )}
-                        {this.state.type === "2" && (
-                            <Item regular style={styles.input}>
                                 <Input placeholder="Digite o Nsd (KN)" keyboardType="numeric" onChangeText={(text) => this.changeNSD(text)} />
-                            </Item>
-                        )}
-                        {this.state.type === "2" && (
-                            <Item regular style={styles.input}>
-                                <Input placeholder="Digite a área do concreto (cm²)" keyboardType="numeric" onChangeText={(text) => this.changeArea(text)} />
                             </Item>
                         )}
                         {this.state.type === "2" && (

@@ -1,42 +1,61 @@
 import React from "react";
 import { Modal } from "react-native";
 import ImageViewer from 'react-native-image-zoom-viewer';
-import { Container, Content, List, ListItem, Thumbnail, Text, Left, Body, Right, Button } from 'native-base';
+import { Container, Content, List, ListItem, Text, Body, Right, Button } from 'native-base';
 
 import HeaderApp from "../header/header";
 
-const fireTruck = require("../../assets/fire-truck-512x512.png");
+const tables = require("../../tables.json");
 
 class Table extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { modal: false };
+        this.state = {
+            modal: false, position: 0, images: [
+                {
+                    props: { source: require("../../assets/table7.png") }
+                },
+                {
+                    props: { source: require("../../assets/table6.png") }
+                },
+                {
+                    props: { source: require("../../assets/table11.png") }
+                },
+                {
+                    props: { source: require("../../assets/table5.png") }
+                },
+                {
+                    props: { source: require("../../assets/table12.png") }
+                }
+            ]
+        };
     }
 
     setModal(modal) {
         this.setState({ modal });
     }
 
+    visibleModal(modal,position) {
+        this.setState({modal,position})
+    }
+
     list() {
         let listItem = [];
-        for (let i = 0; i < 5; i++) {
+        tables.map((data,index) => {
             listItem.push(
-                <ListItem thumbnail key={i}>
-                    <Left>
-                        <Thumbnail square source={fireTruck} />
-                    </Left>
+                <ListItem thumbnail key={index}>
                     <Body>
-                        <Text>Sankhadeep</Text>
-                        <Text note numberOfLines={2}>Its time to build a difference . .</Text>
+                        <Text>{data.name}</Text>
+                        <Text note numberOfLines={7}>{data.description}</Text>
                     </Body>
                     <Right>
-                        <Button transparent onPress={() => this.setModal(true)}>
+                        <Button transparent onPress={() => this.visibleModal(true,index)}>
                             <Text>Visualizar</Text>
                         </Button>
                     </Right>
                 </ListItem>
             )
-        }
+        });
         return listItem;
     }
 
@@ -50,7 +69,7 @@ class Table extends React.Component {
                     </List>
                 </Content>
                 <Modal visible={this.state.modal} transparent={true} onRequestClose={() => this.setModal(false)} >
-                    <ImageViewer enableImageZoom={true} imageUrls={[{ props: { source: fireTruck } }]} />
+                    <ImageViewer index={this.state.position} imageUrls={this.state.images} />
                 </Modal>
             </Container>
         )

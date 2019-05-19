@@ -4,7 +4,7 @@ import { Container, Content, Thumbnail, Text } from 'native-base';
 
 import HeaderApp from '../header/header';
 
-const fire_truck = require("../../assets/fire-truck-512x512.png");
+const fire_truck = require("../../assets/fire-truck.png");
 
 class About extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class About extends React.Component {
                         <Text style={styles.title}>Fight Fire</Text>
                         <Text style={styles.about}>
                             Aplicativo para o cálculo do tempo requerido de resistência ao fogo (TRRF) das estruturas
-                            de concreto armado conforme as recomendações das normas ABNT 14432 e ABNT 15200. 
+                            de concreto armado, conforme as recomendações das normas ABNT 14432 e ABNT 15200. 
                         </Text>
                         <Text style={styles.version}>v1.0.0</Text>
                     </View>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 80
+        marginTop: 82
     },
     title: {
         fontWeight: 'bold',

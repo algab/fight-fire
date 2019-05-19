@@ -35,7 +35,7 @@ class Beam extends React.Component {
             else {
                 this.setState({ base: parseFloat(value) });
             }
-        }, 600);
+        }, 900);
     }
 
     changeArmorLong(value) {
@@ -68,7 +68,7 @@ class Beam extends React.Component {
             else {
                 this.setState({ cobr: parseFloat(value) });
             }
-        }, 600);
+        }, 900);
     }
 
     verifyButton() {
