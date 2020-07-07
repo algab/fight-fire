@@ -3,7 +3,6 @@
     "name": "Fight Fire",
     "slug": "fight-fire",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
@@ -22,6 +21,10 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "androidStatusBar": {
+      "backgroundColor": "#D90B0B",
+      "barStyle": "light-content"
+    },
     "android": {
       "package": "com.fightfire.fightfire"
     },
