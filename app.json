@@ -26,7 +26,7 @@
       "barStyle": "light-content"
     },
     "android": {
-      "package": "com.fightfire.fightfire"
+      "package": "br.com.fightfire"
     },
     "ios": {
       "supportsTablet": true
