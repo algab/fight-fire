@@ -1,51 +1,20 @@
+import 'react-native-gesture-handler';
 import React from "react";
-import { createAppContainer, createBottomTabNavigator } from "react-navigation";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from './components/home/home';
-import Table from './components/table/table';
-import About from './components/about/about';
+import Home from './src/pages/Home';
+import Structures from './src/pages/Structures';
 
-const App = createAppContainer(
-  createBottomTabNavigator({
-    Home : {
-      screen: Home,
-      navigationOptions: {
-        tabBarLabel:"Inicio",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="home" size={30} color="#8b0000" />
-        )
-      }
-    },
-    Table: {
-      screen: Table,
-      navigationOptions: {
-        tabBarLabel:"Tabelas",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="table" size={30} color="#8b0000" />
-        )
-      }
-    },
-    About: {
-      screen: About,
-      navigationOptions: {
-        tabBarLabel:"Sobre",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="info-circle" size={30} color="#8b0000" />
-        )
-      }
-    }
-  },
-  {
-    order: ['Home', 'Table','About'],
-    tabBarOptions: {
-      showIcon: true,
-      activeTintColor: '#8b0000',
-      style: {
-        backgroundColor: 'white',
-      }
-    },
-  })
-)
+const Stack = createStackNavigator();
+
+const App = () => (
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Structures" component={Structures} />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
 
 export default App;
