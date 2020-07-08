@@ -13,7 +13,7 @@ export default function Structures({ route: { params } }) {
             <Header />
             <Tabs>
                 <Tab heading="Laje" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab}>
-                    <Slab />
+                    <Slab trrf={params.trrf} />
                 </Tab>
                 <Tab heading="Viga" tabStyle={styles.tab} textStyle={styles.text} activeTabStyle={styles.tab}>
                     <Text>Viga</Text>

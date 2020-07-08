@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Header from '../../components/Header';
 
-import { calc } from '../../utils/calc';
+import { calc } from '../../utils/trrf';
 
 import { styles } from './styles';
 
