@@ -5,9 +5,10 @@ export const styles = StyleSheet.create({
         flex: 1
     },
     input: {
-        marginLeft: 10,
+        marginTop: 5,
         marginRight: 10,
-        marginBottom: 20
+        marginBottom: 15,
+        marginLeft: 10
     },
     label: {
         marginLeft: 1,
@@ -26,8 +27,8 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#D90B0B',
-        elevation: 15
+        backgroundColor: '#FA1414',
+        elevation: 8
     },
     iconButton: {
         color: '#fff'
